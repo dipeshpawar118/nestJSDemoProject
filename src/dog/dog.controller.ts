@@ -4,7 +4,6 @@ import { DogService } from './dog.service';
 @Controller('dog')
 export class DogController {
   constructor(private dogService : DogService){
-
   }
 
     // @Get()
@@ -20,9 +19,13 @@ export class DogController {
     // }
 
     @Get(':number')
-    async checkNumber( @Param('number'  ) num :number) {
+    async checkNumber( @Param('number') num :number) {
       console.log(num ) 
-      
-     return this.dogService.checkNumber(num);
+      if(this.dogService.checkUser(num)){
+        return this.dogService.checkNumber(num);
+      }else {
+        throw new HttpException({status : HttpStatus.UNAUTHORIZED , error : 'this user is Unauthorized'} , HttpStatus.FORBIDDEN); 
+      }
+     
     }
 }

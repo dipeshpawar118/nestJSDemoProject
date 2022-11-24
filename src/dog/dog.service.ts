@@ -17,5 +17,16 @@ export class DogService {
      }
 
 
+     checkUser(user){
+     if(user === 'Admin'){
+        return true ;
+     }
+
+     return false 
+     }
+
+
+    
+
    
 }
