@@ -8,7 +8,7 @@ import { LoggerMiddleware } from './middleware/log.middleware';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [CatsModule, DogModule , MongooseModule.forRoot('mongodb://localhost:27017/nest'), UsersModule],
+  imports: [CatsModule, DogModule ,UsersModule , MongooseModule.forRoot('mongodb://localhost:27017/nest')],
   controllers: [AppController],
   providers: [AppService],
 })
