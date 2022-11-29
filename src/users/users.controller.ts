@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from 'src/dto/user.dto';
 import { UsersService } from './users.service';
 
@@ -12,9 +13,15 @@ export class UsersController {
   async addUser(@Body()  userDto :  UserDto){
           return await this.userService.AddUsers(userDto);
   }
-   
-  @Get()
-  async getUser() : Promise<UserDto[]> {
-      return await this.userService.GetUsers();
+  
+ 
+  @Get('getAll')
+  async getUser(@Body()  userDto : any ) : Promise<UserDto[]> {
+        return await this.userService.GetUsers();
+      
+  }
+  @Post('login')
+  async userLogin( @Body() userLogin : any ): Promise<string> {  
+      return await this.userService.loginUser(userLogin.email,userLogin.password);
   }
 }
