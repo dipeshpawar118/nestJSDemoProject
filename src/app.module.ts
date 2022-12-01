@@ -11,12 +11,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';
 
 @Module({
-  imports: [CatsModule, DogModule ,UsersModule , MongooseModule.forRoot('mongodb://localhost:27017/nest'), AuthModule],
+  imports: [CatsModule, DogModule ,UsersModule , MongooseModule.forRoot('mongodb+srv://dipeshPawar:UxeqqKHhTPZPSitP@ayushserverdemo.b3wsgy3.mongodb.net/nest?retryWrites=true&w=majority'), AuthModule],
   controllers: [AppController],
-  providers: [AppService , {
-    provide: APP_GUARD,
-    useClass: AuthGuard('Custom'),
-  }],
+  providers: [AppService ],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer , ) {
