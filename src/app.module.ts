@@ -15,7 +15,7 @@ import { PahadiFigtersService } from './pahadi-figters/pahadi-figters.service';
 import { CricketModule } from './cricket/cricket.module';
 
 @Module({
-  imports: [CatsModule, DogModule ,UsersModule , MongooseModule.forRoot('mongodb://localhost:27017/nest'), AuthModule, PahadiFightersModule, CricketModule],
+  imports: [CatsModule, DogModule ,UsersModule , AuthModule, PahadiFightersModule, CricketModule , MongooseModule.forRoot('mongodb+srv://dipeshPawar:UxeqqKHhTPZPSitP@ayushserverdemo.b3wsgy3.mongodb.net/nest?retryWrites=true&w=majority')],
   controllers: [AppController, PahadiFigtersController],
   providers: [AppService , PahadiFigtersService],
 })
