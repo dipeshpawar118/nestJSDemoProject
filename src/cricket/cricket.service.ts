@@ -17,4 +17,18 @@ export class CricketService {
         return createdCricket.save();
     }
 
+    async deleteCricket( cricketName : string) {
+        const result = await this.cricketModel.deleteOne({name : cricketName});
+        if (result.acknowledged && result.deletedCount > 0 ){
+            return  `Cricket ${cricketName} is deleted deletedCount ${result.deletedCount} `
+        }else {
+          return  `no Cricket   ${cricketName} found `
+        }
+    }
+
+    async updateCricket (cricketName:string, updateCricketDto:CreateCatDto){
+        const result = await this.cricketModel.updateOne({name:cricketName}, updateCricketDto);
+        return result;
+    }
+
 }
