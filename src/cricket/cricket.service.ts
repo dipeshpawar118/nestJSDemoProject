@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCatDto } from 'src/dto/cats.dto';
+import { CreateCricketDto } from 'src/dto/cricket.dto';
 import { Cricket, CricketDocument } from 'src/schemas/cricket.schema';
 
 @Injectable()
@@ -12,7 +13,7 @@ export class CricketService {
         return this.cricketModel.find().exec();
     }
 
-    async addCricket( cricketDto : CreateCatDto ): Promise<Cricket> {
+    async addCricket( cricketDto : CreateCricketDto ): Promise<Cricket> {
         const createdCricket = new this.cricketModel(cricketDto);
         return createdCricket.save();
     }
@@ -26,7 +27,7 @@ export class CricketService {
         }
     }
 
-    async updateCricket (cricketName:string, updateCricketDto:CreateCatDto){
+    async updateCricket (cricketName:string, updateCricketDto:CreateCricketDto){
         const result = await this.cricketModel.updateOne({name:cricketName}, updateCricketDto);
         return result;
     }
