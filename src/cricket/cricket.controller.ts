@@ -13,7 +13,7 @@ export class CricketController {
     }
 
     @Post ('Add')
-    async AddCricket( @Body() cricketDto : CreateCatDto ) {
+    async AddCricket( @Body() cricketDto : CreateCricketDto ) {
         return await this.cricketService.addCricket(cricketDto);
     }
 
