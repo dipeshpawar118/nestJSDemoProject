@@ -13,6 +13,7 @@ export class CatsController {
       return this.catsService.getType();
   }
 
+
   @Post('Add')
   async AddCat( @Body() catDto : CreateCatDto )  {
       return await this.catsService.addCat(catDto); 
