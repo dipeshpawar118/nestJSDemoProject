@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { DogModule } from './dog/dog.module';
-import { LoggerMiddleware } from './middleware/log.middleware';
+import { LoggerMiddleware } from './middleware/logger.middleware';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
@@ -20,9 +20,9 @@ import { CricketModule } from './cricket/cricket.module';
   providers: [AppService , PahadiFigtersService],
 })
 export class AppModule {
-  configure(consumer: MiddlewareConsumer , ) {
+  configure(consumer: MiddlewareConsumer){
     consumer
-      .apply(LoggerMiddleware)
-      .forRoutes('cats');
+    .apply(LoggerMiddleware)
+    .forRoutes("*")
   }
 }
